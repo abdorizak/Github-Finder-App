@@ -5,4 +5,10 @@
 //  Created by Abdirizak Hassan on 10/21/21.
 //
 
-import Foundation
+import UIKit
+
+extension String {
+    var asUrl: URL? {
+        return URL(string: self)
+    }
+}

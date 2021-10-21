@@ -1,0 +1,6 @@
+framework module Pods_Github_Finder {
+  umbrella header "Pods-Github-Finder-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -6,24 +6,46 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserDetailsVC: UIViewController {
+    
+    @IBOutlet var UserImage: UIImageView!
+    @IBOutlet var fullNameLabel: UILabel!
+    @IBOutlet var bioLabel: UILabel!
+    @IBOutlet var userWebsiteLabel: UILabel!
+    @IBOutlet var UserLocationLabel: UILabel!
+    @IBOutlet var userFollowersLabel: UILabel!
+    @IBOutlet var UserRepoLabel: UILabel!
+    
+    var userDetail: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        UserImage.rounded()
+        displayUserInfo()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func displayUserInfo() {
+        
+        guard let userinfo = userDetail else { return }
+        
+        UserImage.kf.setImage(with:userinfo.userImage?.asUrl)
+        fullNameLabel.text = userinfo.fullName
+        bioLabel.text = userinfo.userBio
+        userWebsiteLabel.text = userinfo.userWebsite
+        UserLocationLabel.text = userinfo.userLocation ?? "Nil"
+        userFollowersLabel.text = "Followers:" + String(userinfo.userFollowers)
+        UserRepoLabel.text = "Repositories:" + String(userinfo.userRepositories)
     }
-    */
 
+}
+
+
+extension UIImageView {
+
+    func rounded() {
+        self.layer.cornerRadius = (self.frame.size.width / 2)
+        self.layer.masksToBounds = true
+    }
 }
