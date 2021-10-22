@@ -13,7 +13,7 @@ $ sudo gem install cocoapods
 after installation
 
 ```
-pod install
+$ pod install
 ```
 
 
